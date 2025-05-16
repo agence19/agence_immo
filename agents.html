@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>أيوب للعقارات | Agents</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a2f95fdefb.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      padding-top: 56px; /* Pour compenser la navbar fixe */
+    }
+    footer {
+      background-color: #2a2f35;
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .agent-card, .admin-card {
+      transition: transform 0.3s ease;
+      height: 100%;
+    }
+    .agent-card:hover, .admin-card:hover {
+      transform: translateY(-10px);
+    }
+    .agent-img, .admin-img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      margin: 0 auto;
+    }
+    .card-body {
+      text-align: center;
+    }
+    .btn-warning {
+      background-color: #c5a47e;
+      border-color: #c5a47e;
+    }
+    .btn-warning:hover {
+      background-color: #a2875b;
+      border-color: #a2875b;
+    }
+    .hero {
+      padding: 100px 0;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-4" href="#"><span>أيوب</span> للعقارات</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="nav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="connexion.html" class="nav-link">Connexion</a></li>
+          <li class="nav-item"><a href="acheter.html" class="nav-link">Acheter</a></li>
+          <li class="nav-item"><a href="louer.html" class="nav-link">Louer</a></li>
+          <li class="nav-item"><a href="vendre.html" class="nav-link">Vendre</a></li>
+          <li class="nav-item"><a href="agents.html" class="nav-link">Agents</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero bg-dark text-white text-center py-5">
+    <div class="container">
+      <h1 class="display-4">Nos Agents Immobiliers</h1>
+      <p class="lead mb-4">Rencontrez nos agents professionnels pour vous aider à trouver la propriété de vos rêves</p>
+    </div>
+  </section>
+
+  <!-- Agent and Admin Listings -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">Nos Agents et Administrateur</h2>
+      <div class="row g-4">
+        <!-- Agent 1 -->
+        <div class="col-md-4">
+          <div class="card agent-card h-100">
+            <img src="contacts1.png" class="agent-img rounded-circle mt-4" alt="Ahmed Benali" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title mt-3">Ahmed Benali</h5>
+              <p class="card-text flex-grow-1">Expert en immobilier résidentiel à Alger. Plus de 10 ans d'expérience.</p>
+              <a href="contacter1.html" class="btn btn-warning align-self-center">Contacter</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Agent 2 -->
+        <div class="col-md-4">
+          <div class="card agent-card h-100">
+            <img src="contacts2.jfif" class="agent-img rounded-circle mt-4" alt="Sofian Harrat" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title mt-3">Sofian Harrat</h5>
+              <p class="card-text flex-grow-1">Spécialiste des biens commerciaux à Oran, disponible pour des consultations personnalisées.</p>
+              <a href="contacter1.html" class="btn btn-warning align-self-center">Contacter</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Agent 3 -->
+        <div class="col-md-4">
+          <div class="card agent-card h-100">
+            <img src="contacts3.jfif" class="agent-img rounded-circle mt-4" alt="Khaled Ziani" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title mt-3">Khaled Ziani</h5>
+              <p class="card-text flex-grow-1">Agent immobilier spécialisé dans la location à Sétif. Passionné par la satisfaction client.</p>
+              <a href="contacter1.html" class="btn btn-warning align-self-center">Contacter</a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-5">
+    <div class="container">
+      <p class="mb-0">© 2025 أيوب للعقارات. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

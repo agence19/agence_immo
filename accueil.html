@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agence Immobilière | Votre Maison de Rêve</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --accent: #3498db;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Navbar */
+        .navbar {
+            transition: all 0.3s;
+        }
+        
+        .navbar.scrolled {
+            background-color: var(--primary) !important;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .navbar-brand span {
+            color: var(--secondary);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), 
+                        url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6') center/cover no-repeat;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Search Form */
+        .search-form {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary);
+        }
+        
+        .form-control, .form-select {
+            padding-left: 40px;
+            height: 50px;
+            border-radius: 8px;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            padding: 12px 30px;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            background-color: #c0392b;
+            border-color: #c0392b;
+        }
+        
+        .btn-outline-primary {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+        }
+        
+        /* Section Titles */
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto;
+        }
+        
+        /* Property Cards */
+        .property-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .property-img {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+        }
+        
+        .property-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        
+        .property-price {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .property-features {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            color: #555;
+        }
+        
+        /* About Section */
+        .about-img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-rating {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        /* Stats */
+        .stats-section {
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), 
+                        url('https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c') center/cover no-repeat;
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background-color: var(--light);
+            padding: 60px 0;
+        }
+        
+        .newsletter-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 0;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .footer-logo span {
+            color: var(--secondary);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            .search-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#"><span>Immo</span>Alger</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Acheter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Louer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Vendre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Agents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <a href="#" class="btn btn-outline-primary ms-lg-3">Connexion</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="hero-title">Trouvez Votre Maison de Rêve</h1>
+                    <p class="hero-subtitle">Découvrez les meilleures propriétés dans les plus belles villes d'Algérie</p>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-10 mx-auto">
+                    <form class="search-form">
+                        <div class="row g-3">
+                            <div class="col-md-4 position-relative">
+                                <i class="fas fa-search form-icon"></i>
+                                <input type="text" class="form-control" placeholder="Recherche par mot-clé...">
+                            </div>
+                            <div class="col-md-3 position-relative">
+                                <i class="fas fa-map-marker-alt form-icon"></i>
+                                <select class="form-select">
+                                    <option selected>Toute localisation</option>
+                                    <option>Alger</option>
+                                    <option>Oran</option>
+                                    <option>Constantine</option>
+                                    <option>Sétif</option>
+                                    <option>Annaba</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 position-relative">
+                                <i class="fas fa-money-bill-wave form-icon"></i>
+                                <select class="form-select">
+                                    <option selected>Budget maximum</option>
+                                    <option>5 000 000 DA</option>
+                                    <option>10 000 000 DA</option>
+                                    <option>20 000 000 DA</option>
+                                    <option>30 000 000 DA</option>
+                                    <option>50 000 000 DA</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary w-100">Rechercher</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Propriétés en Vedette</h2>
+                    <p class="text-muted mb-5">Découvrez notre sélection exclusive de propriétés</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- Property 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Villa moderne" class="property-img">
+                            <span class="property-badge">À Vendre</span>
+                        </div>
+                        <div class="p-4">
+                            <div class="property-price">25 000 000 DA</div>
+                            <h3 class="h5">Villa Moderne à Alger</h3>
+                            <p class="text-muted"><i class="fas fa-map-marker-alt text-secondary me-2"></i> El Biar, Alger</p>
+                            <div class="property-features">
+                                <span><i class="fas fa-bed me-1"></i> 4 Chambres</span>
+                                <span><i class="fas fa-bath me-1"></i> 3 SDB</span>
+                                <span><i class="fas fa-ruler-combined me-1"></i> 220m²</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6" alt="Appartement" class="property-img">
+                            <span class="property-badge">Nouveau</span>
+                        </div>
+                        <div class="p-4">
+                            <div class="property-price">18 500 000 DA</div>
+                            <h3 class="h5">Appartement Luxe à Oran</h3>
+                            <p class="text-muted"><i class="fas fa-map-marker-alt text-secondary me-2"></i> Sidi Maarouf, Oran</p>
+                            <div class="property-features">
+                                <span><i class="fas fa-bed me-1"></i> 3 Chambres</span>
+                                <span><i class="fas fa-bath me-1"></i> 2 SDB</span>
+                                <span><i class="fas fa-ruler-combined me-1"></i> 150m²</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1605146769289-440113cc3d00" alt="Maison" class="property-img">
+                            <span class="property-badge">Location</span>
+                        </div>
+                        <div class="p-4">
+                            <div class="property-price">80 000 DA/mois</div>
+                            <h3 class="h5">Maison avec Jardin à Sétif</h3>
+                            <p class="text-muted"><i class="fas fa-map-marker-alt text-secondary me-2"></i> Ain Arnat, Sétif</p>
+                            <div class="property-features">
+                                <span><i class="fas fa-bed me-1"></i> 4 Chambres</span>
+                                <span><i class="fas fa-bath me-1"></i> 2 SDB</span>
+                                <span><i class="fas fa-ruler-combined me-1"></i> 180m²</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-primary">Voir Plus de Propriétés</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf" alt="Notre équipe" class="img-fluid about-img">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title">À Propos de Nous</h2>
+                    <p class="lead">ImmoAlger est l'agence immobilière leader en Algérie depuis 2010.</p>
+                    <p>Nous offrons des services immobiliers complets avec une approche personnalisée pour chaque client. Notre équipe d'experts vous accompagne à chaque étape de votre projet immobilier.</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex">
+                                <div class="me-3 text-secondary">
+                                    <i class="fas fa-check-circle fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="h6">Expertise Locale</h5>
+                                    <p class="small text-muted mb-0">Connaissance approfondie du marché</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex">
+                                <div class="me-3 text-secondary">
+                                    <i class="fas fa-check-circle fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="h6">Service Personnalisé</h5>
+                                    <p class="small text-muted mb-0">Solutions adaptées à vos besoins</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex">
+                                <div class="me-3 text-secondary">
+                                    <i class="fas fa-check-circle fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="h6">Transparence</h5>
+                                    <p class="small text-muted mb-0">Processus clair et sécurisé</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex">
+                                <div class="me-3 text-secondary">
+                                    <i class="fas fa-check-circle fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="h6">Réseau Étendu</h5>
+                                    <p class="small text-muted mb-0">Accès aux meilleures propriétés</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-outline-primary mt-3">En Savoir Plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="500">0</div>
+                        <div class="stat-title">Transactions</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="120">0</div>
+                        <div class="stat-title">Clients Satisfaits</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="15">0</div>
+                        <div class="stat-title">Villes Couvertes</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="10">0</div>
+                        <div class="stat-title">Années d'Expérience</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Ce Que Disent Nos Clients</h2>
+                    <p class="text-muted mb-5">Découvrez les témoignages de nos clients satisfaits</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="testimonial-card h-100">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="mb-4">"L'équipe de ImmoAlger a été exceptionnelle dans l'accompagnement de notre achat. Professionnalisme, réactivité et excellente connaissance du marché."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="rounded-circle me-3" width="60">
+                            <div>
+                                <h5 class="mb-0">Karim B.</h5>
+                                <small class="text-muted">Acheteur à Alger</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="testimonial-card h-100">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="mb-4">"Nous avons trouvé la maison parfaite grâce à ImmoAlger. Leur service personnalisé et leur attention aux détails ont fait toute la différence."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="rounded-circle me-3" width="60">
+                            <div>
+                                <h5 class="mb-0">Amina S.</h5>
+                                <small class="text-muted">Acheteuse à Oran</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="testimonial-card h-100">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="mb-4">"En tant qu'investisseur étranger, j'ai apprécié leur expertise du marché algérien. Ils ont rendu le processus simple et transparent."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Client" class="rounded-circle me-3" width="60">
+                            <div>
+                                <h5 class="mb-0">Jean P.</h5>
+                                <small class="text-muted">Investisseur</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4">Abonnez-vous à Notre Newsletter</h2>
+                    <p class="mb-5">Recevez les dernières offres exclusives et conseils immobiliers directement dans votre boîte mail.</p>
+                    
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control form-control-lg" placeholder="Votre adresse email">
+                            <button class="btn btn-primary" type="submit">S'abonner</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <a href="#" class="d-inline-block footer-logo mb-3"><span>Immo</span>Alger</a>
+                    <p class="text-muted mb-4">L'agence immobilière leader en Algérie, offrant des services complets et personnalisés depuis 2010.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h3 class="footer-links">Liens Rapides</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#">Accueil</a></li>
+                        <li class="mb-2"><a href="#">Acheter</a></li>
+                        <li class="mb-2"><a href="#">Louer</a></li>
+                        <li class="mb-2"><a href="#">Vendre</a></li>
+                        <li class="mb-2"><a href="#">Agents</a></li>
+                        <li class="mb-2"><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h3 class="footer-links">Services</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#">Évaluation de propriété</a></li>
+                        <li class="mb-2"><a href="#">Gestion locative</a></li>
+                        <li class="mb-2"><a href="#">Consultation immobilière</a></li>
+                        <li class="mb-2"><a href="#">Investissement</a></li>
+                        <li class="mb-2"><a href="#">Prêt immobilier</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="footer-links">Contact</h3>
+                    <ul class="list-unstyled text-muted">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt text-secondary me-2"></i> 123 Rue Didouche Mourad, Alger</li>
+                        <li class="mb-3"><i class="fas fa-phone text-secondary me-2"></i> +213 123 456 789</li>
+                        <li class="mb-3"><i class="fas fa-envelope text-secondary me-2"></i> contact@immoalger.dz</li>
+                        <li><i class="fas fa-clock text-secondary me-2"></i> Lun-Ven: 9h-17h</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start">
+                            <p class="mb-0">&copy; 2023 ImmoAlger. Tous droits réservés.</p>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <p class="mb-0">Développé par <a href="#" class="text-white">WebSolutions</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Counter animation
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+        
+        function animateCounters() {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+        
+        // Trigger counter animation when stats section is in view
+        const statsSection = document.querySelector('.stats-section');
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                animateCounters();
+                observer.unobserve(statsSection);
+            }
+        });
+        
+        observer.observe(statsSection);
+        
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

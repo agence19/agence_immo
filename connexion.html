@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>أيوب للعقارات | Inscription</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a2f95fdefb.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .navbar-brand span {
+      color: #ff7f50;
+    }
+    .register-container {
+      padding: 100px 0;
+    }
+    .register-card {
+      background: white;
+      padding: 3rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .btn-primary {
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+    .btn-primary:hover {
+      background-color: #b02a37;
+      border-color: #b02a37;
+    }
+    footer {
+      background-color: #2a2f35;
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .success-message {
+      display: none;
+      background-color: #d4edda;
+      padding: 1rem;
+      margin-top: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-4" href="#"><span>أيوب</span> للعقارات</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="nav">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="connexion.html" class="nav-link">Connexion</a></li>
+            <li class="nav-item"><a href="acheter.html" class="nav-link">Acheter</a></li>
+            <li class="nav-item"><a href="louer.html" class="nav-link">Louer</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Vendre</a></li>
+            <li class="nav-item"><a href="agents.html" class="nav-link">Agents</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Register Section -->
+  <section class="register-container">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="register-card">
+            <h2 class="text-center mb-4">Créer un compte</h2>
+            <p class="text-center text-muted mb-4">Remplissez vos informations pour rejoindre notre plateforme.</p>
+
+            <!-- Formulaire -->
+            <form id="registerForm" class="needs-validation" novalidate method="POST" action="http://localhost/agence_immo/contact3.php">
+  <div class="mb-3">
+    <label for="lastname" class="form-label">Nom</label>
+    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Votre nom" required />
+    <div class="invalid-feedback">Entrez un nom valide (minimum 2 lettres).</div>
+  </div>
+  <div class="mb-3">
+    <label for="firstname" class="form-label">Prénom</label>
+    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Votre prénom" required />
+    <div class="invalid-feedback">Entrez un prénom valide (minimum 2 lettres).</div>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Adresse Email</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="exemple@email.com" required />
+    <div class="invalid-feedback">Entrez une adresse email valide.</div>
+  </div>
+  <div class="mb-3">
+    <label for="location" class="form-label">Localisation</label>
+    <input type="text" class="form-control" id="location" name="location" placeholder="Votre ville" required />
+    <div class="invalid-feedback">Entrez votre localisation.</div>
+  </div>
+  <div class="d-grid">
+    <button type="submit" class="btn btn-primary btn-lg">S'inscrire</button>
+  </div>
+
+  <div class="alert alert-success success-message text-center mt-4" role="alert">
+    ✅ Vous êtes maintenant enregistré(e) !
+  </div>
+</form>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="mb-0">© 2025 <strong>أيوب للعقارات</strong> | Tous droits réservés</p>
+  </footer>
+
+  <!-- JS Bootstrap & Validation -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+  const form = document.getElementById("registerForm");
+  const successMessage = document.querySelector(".success-message");
+
+  form.addEventListener("submit", function (e) {
+    let valid = true;
+
+    // Validation
+    const lastname = document.getElementById("lastname");
+    const firstname = document.getElementById("firstname");
+    const email = document.getElementById("email");
+    const location = document.getElementById("location");
+
+    if (!/^[A-Za-z\s]{2,}$/.test(lastname.value.trim())) {
+      lastname.classList.add("is-invalid");
+      valid = false;
+    } else {
+      lastname.classList.remove("is-invalid");
+    }
+
+    if (!/^[A-Za-z\s]{2,}$/.test(firstname.value.trim())) {
+      firstname.classList.add("is-invalid");
+      valid = false;
+    } else {
+      firstname.classList.remove("is-invalid");
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+      email.classList.add("is-invalid");
+      valid = false;
+    } else {
+      email.classList.remove("is-invalid");
+    }
+
+    if (location.value.trim().length < 2) {
+      location.classList.add("is-invalid");
+      valid = false;
+    } else {
+      location.classList.remove("is-invalid");
+    }
+
+    // Si validation échoue, empêcher l'envoi
+    if (!valid) {
+      e.preventDefault(); // empêche l'envoi si données invalides
+    }
+  });
+</script>
+</body>
+</html>

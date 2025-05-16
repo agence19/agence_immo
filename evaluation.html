@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>أيوب للعقارات | Évaluer un Bien</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a2f95fdefb.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .navbar-brand span {
+      color: #ff7f50;
+    }
+    .eval-container {
+      padding: 100px 0;
+    }
+    .eval-card {
+      background: white;
+      padding: 3rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .btn-primary {
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+    .btn-primary:hover {
+      background-color: #218838;
+      border-color: #218838;
+    }
+    footer {
+      background-color: #2a2f35;
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .result-box {
+      margin-top: 20px;
+      background-color: #d4edda;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-4" href="#"><span>أيوب</span> للعقارات</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="nav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="acheter.html" class="nav-link">Acheter</a></li>
+          <li class="nav-item"><a href="louer.html" class="nav-link">Louer</a></li>
+          <li class="nav-item"><a href="vendre.html" class="nav-link">Vendre</a></li>
+          <li class="nav-item"><a href="evaluer.html" class="nav-link active">Évaluer</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Evaluation Section -->
+  <section class="eval-container">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="eval-card">
+            <h2 class="text-center mb-4">Évaluez votre Bien</h2>
+            <p class="text-center text-muted mb-4">Complétez quelques informations pour estimer la valeur.</p>
+
+            <form id="evalForm" class="needs-validation" novalidate>
+              <div class="mb-3">
+                <label for="propertyType" class="form-label">Type de Bien</label>
+                <select class="form-select" id="propertyType" required>
+                  <option value="">Choisir...</option>
+                  <option value="Maison">Maison</option>
+                  <option value="Appartement">Appartement</option>
+                  <option value="Terrain">Terrain</option>
+                </select>
+                <div class="invalid-feedback">Sélectionnez un type de bien.</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="surface" class="form-label">Surface (en m²)</label>
+                <input type="number" class="form-control" id="surface" placeholder="ex: 120" required />
+                <div class="invalid-feedback">Entrez une surface valide.</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="location" class="form-label">Ville</label>
+                <input type="text" class="form-control" id="location" placeholder="ex: Alger" required />
+                <div class="invalid-feedback">Entrez une ville valide.</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="condition" class="form-label">État du bien</label>
+                <select class="form-select" id="condition" required>
+                  <option value="">Choisir...</option>
+                  <option value="Neuf">Neuf</option>
+                  <option value="Bon état">Bon état</option>
+                  <option value="À rénover">À rénover</option>
+                </select>
+                <div class="invalid-feedback">Sélectionnez l'état du bien.</div>
+              </div>
+
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg">Évaluer</button>
+              </div>
+
+              <div class="result-box" id="result">
+                🏡 Votre bien est estimé à : <strong id="estimatedPrice"></strong> DZD
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="mb-0">© 2025 <strong>أيوب للعقارات</strong> | Tous droits réservés</p>
+  </footer>
+
+  <!-- JS Bootstrap & Evaluation -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const form = document.getElementById("evalForm");
+    const resultBox = document.getElementById("result");
+    const estimatedPrice = document.getElementById("estimatedPrice");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      let valid = true;
+
+      const type = document.getElementById("propertyType").value;
+      const surface = document.getElementById("surface").value;
+      const location = document.getElementById("location").value.trim();
+      const condition = document.getElementById("condition").value;
+
+      if (type === "") valid = false;
+      if (surface <= 0) valid = false;
+      if (location.length < 2) valid = false;
+      if (condition === "") valid = false;
+
+      if (!valid) {
+        form.classList.add('was-validated');
+        return;
+      }
+
+      // Simple estimation :
+      let basePricePerM2 = 80000; // Prix de base
+
+      if (type === "Maison") basePricePerM2 = 90000;
+      if (type === "Terrain") basePricePerM2 = 40000;
+
+      if (condition === "Neuf") basePricePerM2 *= 1.2;
+      if (condition === "À rénover") basePricePerM2 *= 0.7;
+
+      const estimated = Math.round(surface * basePricePerM2);
+
+      estimatedPrice.textContent = estimated.toLocaleString('fr-DZ');
+      resultBox.style.display = "block";
+      resultBox.scrollIntoView({ behavior: "smooth" });
+    });
+  </script>
+
+</body>
+</html>

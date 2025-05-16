@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>أيوب للعقارات | Acheter</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a2f95fdefb.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: #f4f4f4;
+    }
+    footer {
+      background-color: #2a2f35;
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .card-img-top {
+      height: 250px;
+      object-fit: cover;
+    }
+    .property-card {
+      transition: transform 0.3s ease;
+    }
+    .property-card:hover {
+      transform: translateY(-10px);
+    }
+    .btn-warning {
+      background-color: #c5a47e;
+      border-color: #c5a47e;
+    }
+    .btn-warning:hover {
+      background-color: #a2875b;
+      border-color: #a2875b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-4" href="#"><span>أيوب</span> للعقارات</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="nav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="acheter.html" class="nav-link">Acheter</a></li>
+          <li class="nav-item"><a href="louer.html" class="nav-link">Louer</a></li>
+          <li class="nav-item"><a href="agents.html" class="nav-link">Agents</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero bg-dark text-white text-center py-5">
+    <div class="container">
+      <h1 class="display-4">Trouvez votre maison de rêve</h1>
+      <p class="lead mb-4">Explorez les meilleures offres immobilières à vendre en Algérie</p>
+      <a href="#properties" class="btn btn-warning btn-lg">Voir les offres</a>
+    </div>
+  </section>
+
+  <!-- Property Listings Section -->
+  <section id="properties" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Nos Propriétés à Vendre</h2>
+      <div class="row">
+        <!-- Property 1 -->
+        <div class="col-md-4 mb-4">
+          <div class="card property-card">
+            <img src="alger1.jpg" class="card-img-top" alt="Propriété 1" />
+            <div class="card-body">
+              <h5 class="card-title">Appartement à Alger</h5>
+              <p class="card-text">3 chambres, 2 salles de bains, 92 m²</p>
+              <p class="card-text"><strong>21 000 000 DA</strong></p>
+              <a href="details_alger.html" class="btn btn-warning">Voir les Détails</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Property 2 -->
+        <div class="col-md-4 mb-4">
+          <div class="card property-card">
+            <img src="oran1.jpg" class="card-img-top" alt="Propriété 2" />
+            <div class="card-body">
+              <h5 class="card-title">Appartement à Oran</h5>
+              <p class="card-text">2 chambres, salle de bain, 115 m²</p>
+              <p class="card-text"><strong>23 00 000 DA</strong></p>
+              <a href="details_oran.html" class="btn btn-warning">Voir les Détails</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Property 3 -->
+        <div class="col-md-4 mb-4">
+          <div class="card property-card">
+            <img src="setif3.jpg" class="card-img-top" alt="Propriété 3" />
+            <div class="card-body">
+              <h5 class="card-title">Appartement à Sétif</h5>
+              <p class="card-text">3 chambres, 1 salle de bains, 90 m²</p>
+              <p class="card-text"><strong>25 000 000 DA</strong></p>
+            <a href="details_setif.html" class="btn btn-warning">Voir les Détails</a>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="col-md-4 mb-4">
+          <div class="card property-card">
+            <img src="villaalger1.jpg" class="card-img-top" alt="Propriété 3" />
+            <div class="card-body">
+              <h5 class="card-title">Villa à Alger</h5>
+              <p class="card-text">6 chambres, 6 salle de bains, 450 m²</p>
+              <p class="card-text"><strong>450 000 000 DA</strong></p>
+            <a href="algervilla.html" class="btn btn-warning">Voir les Détails</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card property-card">
+            <img src="villaoran9.jfif" class="card-img-top" alt="Propriété 3" />
+            <div class="card-body">
+              <h5 class="card-title">Villa à oran</h5>
+              <p class="card-text">3 chambres, 3 salle de bains, 340 m²</p>
+              <p class="card-text"><strong>170 000 000 DA</strong></p>
+              <a href="oranvilla.html" class="btn btn-warning">Voir les Détails</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card property-card">
+            <img src="villasetif1.jpg" class="card-img-top" alt="Propriété 3" />
+            <div class="card-body">
+              <h5 class="card-title">villa à Sétif</h5>
+              <p class="card-text">3 chambres, 2 salle de bains, 257 m²</p>
+              <p class="card-text"><strong>70 000 000 DA</strong></p>
+              <a href="setifvilla.html" class="btn btn-warning">Voir les Détails</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+  <!-- Footer -->
+  <footer>
+    <p class="mb-0">© 2025 أيوب للعقارات. Tous droits réservés.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
